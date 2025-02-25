@@ -1,0 +1,169 @@
+/* Navbar negro y textos blancos */
+.navbar {
+    background-color: black; /* Fondo negro */
+    position: fixed; /* Fijo en la parte superior */
+    top: 0;
+    width: 100%; /* Asegura que el navbar ocupe todo el ancho */
+    z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+.nav-link,.nav-link:hover {
+    color: black !important; /* Texto blanco para los enlaces */
+    
+}
+
+/* Navbar centrado  (SI SIRVE)*/
+.nav-center {
+    background-color: white;
+    padding: 10px;
+    text-align: center; /* Centra los enlaces */
+}
+
+/* Alinea el icono del toggler hacia la izquierda (SI SIRVE) */
+.navbar-toggler {
+    position: absolute; /* Posiciona el botón de forma absoluta */
+    left: 0; /* Lo coloca completamente a la izquierda */
+}
+
+
+
+/* Ícono hamburguesa del toggler */
+.navbar-toggler-icon::before, .navbar-toggler-icon{
+    content: '\2630'; /* Unicode para el ícono de hamburguesa */
+    font-size: 35px; /* Tamaño del ícono */
+    color: #222; /* Color del ícono */
+    width: 75px;
+    height: 40%;
+}
+
+/* Offcanvas body */
+.offcanvas-body, .offcanvas-body a {
+    color: black !important; /* Letras y enlaces en negro */
+    text-align: left;
+}
+
+body {
+    background-color: white;
+    font-family: "Roboto Condensed", sans-serif;
+
+}
+
+
+.Icono-Mythique img{
+    width: 60px;
+    height: 60px;
+    left: 5%;
+    margin-top: -10px;
+}
+
+@media screen and (max-width:1020px) {
+    .Icono-Mythique{
+        margin-left: 12px;
+    }
+
+}
+
+.linea-vertical{
+    width: 2px;
+    height: 50px;
+    background-color: #b8b8b8;
+    margin-top: -6px;
+    position: absolute;
+    left: 4.2%;
+    box-shadow: 2px 0px 5px rgba(52, 51, 51, 0.5); /* Sombra a la derecha */
+
+}
+
+
+.carousel-inner .carousel-item img {
+    max-height: 520px; /* Ajusta la altura máxima */
+    width: 100%; /* Mantiene el ancho */
+    object-fit: fill; /* Ajusta la imagen sin deformarla */
+}
+
+.carousel-item {
+    position: relative; /* Asegura que ::after esté dentro del item */
+}
+
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1; /* Mantiene el degradado sobre la imagen pero debajo del texto */
+}
+
+.carousel-caption h5{
+    position: absolute; /* Asegura que esté sobre la imagen */
+    bottom: 90px; /* Ajusta la posición del texto */
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-style: normal;
+    font-weight: bold;
+    z-index: 2; /* Hace que el texto esté por encima del difuminado */
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.carousel-caption p{
+    color: black;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 2; /* Hace que el texto esté por encima del difuminado */
+    text-align: center;
+    left: 50%;
+    top: -20px;
+}
+
+/* Aplica la tipografía al texto del carrusel */
+.carousel-caption h5,
+.carousel-caption p {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Hace que los indicadores sean negros */
+.carousel-indicators button {
+   
+    background-color: black;  /* Color negro */
+}
+
+/* Modifica el botón activo */
+.carousel-indicators .active {
+    background-color: black; /* Asegura que el activo también sea negro */
+    opacity: 1; /* Sin transparencia */
+}
+
+
+.card {
+    top: 12px;
+    border-radius:30px; /* Bordes redondeados */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Efecto de zoom al pasar el mouse */
+}
+
+.card-body{
+    background-color: #e4e4e4;
+}
+  
+  .btn-primary {
+    background-color: rgb(26, 117, 26);
+    border-color: rgb(26, 117, 26);
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover{
+    background-color:  rgb(26, 117, 26);
+    border-color: rgb(26, 117, 26) ;
+  }
+  
+
+
+ 
