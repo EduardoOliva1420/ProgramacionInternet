@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Frontend/carrito.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">Your Cart</h1>
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Cart Items -->
+            <div class="list-group mb-4">
+                
+                <!-- Item 1 -->
+                <div class="list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="analog-magazine-rack.jpg" alt="Analog Magazine Rack" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Analog Magazine Rack</h5>
+                            <small class="text-muted">Red</small>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div>$120</div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm">-</button>
+                        <span class="mx-2">2</span>
+                        <button class="btn btn-outline-secondary btn-sm">+</button>
+                    </div>
+                    <div class="text-center">
+                        <div>$240</div>
+                    </div>
+                    <button class="btn btn-link text-danger fs-4">&times;</button>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="closca-helmet.jpg" alt="Closca helmet" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Closca helmet</h5>
+                            <small class="text-muted">Black</small>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div>$132</div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm">-</button>
+                        <span class="mx-2">1</span>
+                        <button class="btn btn-outline-secondary btn-sm">+</button>
+                    </div>
+                    <div class="text-center">
+                        <div>$132</div>
+                    </div>
+                    <button class="btn btn-link text-danger fs-4">&times;</button>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="sigg-water-bottle.jpg" alt="Sigg Water Bottle" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Sigg Water Bottle</h5>
+                            <small class="text-muted">Gravel Black</small>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div>$23</div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm">-</button>
+                        <span class="mx-2">2</span>
+                        <button class="btn btn-outline-secondary btn-sm">+</button>
+                    </div>
+                    <div class="text-center">
+                        <div>$46</div>
+                    </div>
+                    <button class="btn btn-link text-danger fs-4">&times;</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Order Summary</h5>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <span>$418</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <a href="#" class="text-success text-decoration-none d-block mb-3">Add coupon code →</a>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold mb-3">
+                        <span>Total</span>
+                        <span>$418</span>
+                    </div>
+                    <button class="btn btn-success w-100">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (opcional si quieres funcionalidades como tooltips, modals, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
