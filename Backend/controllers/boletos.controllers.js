@@ -1,47 +1,48 @@
-// controllers/boletos.controller.js
-const Boleto = require('../models/Boleto');
+import Boleto from "../models/Boleto.js";
 
-// Ver todos los boletos
-exports.obtenerBoletos = async (req, res) => {
-    try {
-        const boletos = await Boleto.find();
-        res.json(boletos);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener boletos' });
-    }
-}
-   
 
-// Crear un nuevo boleto
-exports.crearBoleto = async (req, res) => {
-    try {
-        const { tipo, precio } = req.body;
-        const nuevoBoleto = new Boleto({ tipo, precio });
-        await nuevoBoleto.save();
-        res.status(201).json(nuevoBoleto);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al crear boleto' });
+export const obtenerBoletos = async (req, res) => {
+  try {
+    const boletos = await Boleto.find();
+    if(!boletos || boletos.length === 0) {
+      res.status(404).json({ error: "No se encontraron boletos" });
+    } else {
+      return res.json(boletos);
     }
-};
+  
+  } catch (error) {
+      console.error(error);
+       return res.status(500).json({ error: "Error interno del servidor" });
+    }
+  };
 
-// Comprar un boleto (poner disponible: false)
-exports.comprarBoleto = async (req, res) => {
+  export const agregarBoletos = async (req,res) => {
     try {
-        const { id } = req.params;
-        const boleto = await Boleto.findByIdAndUpdate(id, { disponible: false }, { new: true });
-        res.json(boleto);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al comprar boleto' });
+      const newBoleto = new Boleto(req.body);
+     if(!newBoleto) {
+      return res.status(404).json({ error: "Campos incompletos" });
+     } else {
+      await newBoleto.save();
+      return res.status(201).json(newBoleto);
+     }
+  } catch (error) {
+      console.error(error);
+       return res.status(500).json({ error: "Error interno del servidor" });
     }
-};
+  };
 
-// Eliminar un boleto
-exports.eliminarBoleto = async (req, res) => {
-    try {
-        const { id } = req.params;
-        await Boleto.findByIdAndDelete(id);
-        res.json({ mensaje: 'Boleto eliminado' });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al eliminar boleto' });
-    }
-};
+  export const eliminarBoletos = async (req, resp) => {
+    try{
+      const eliminarBoleto = await Boleto.findByIdAndDelete(req.params.boletoId);
+      if(!eliminarBoleto) {
+        return resp.status(404).json({ error: "Boleto no encontrado" });
+      } else {
+        return resp.status(201).json({mensaje:"Boleto eliminado"});
+      }
+      } catch (error) {
+        console.error(error);
+         return resp.status(500).json({ error: "Error interno del servidor" });
+      }
+  }
+  
+  
