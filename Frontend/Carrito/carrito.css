@@ -1,0 +1,178 @@
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar {
+    background-color: black; /* Fondo negro */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .nav-center {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .nav-link,
+  .nav-link:hover {
+    color: black !important; /* Texto de enlaces en negro */
+  }
+  
+  .navbar-toggler {
+    position: absolute;
+    left: 0;
+  }
+  
+  .navbar-toggler-icon,
+  .navbar-toggler-icon::before {
+    content: '\2630'; /* Icono hamburguesa */
+    font-size: 35px;
+    color: #222;
+    width: 75px;
+    height: 40%;
+  }
+  
+  .offcanvas-body,
+  .offcanvas-body a {
+    color: black !important;
+    text-align: left;
+  }
+  
+  .Icono-Mythique img {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 5%;
+    margin-top: -10px;
+  }
+  
+  .linea-vertical {
+    width: 2px;
+    height: 50px;
+    background-color: #b8b8b8;
+    margin-top: -6px;
+    position: absolute;
+    left: 4.2%;
+    box-shadow: 2px 0px 5px rgba(52, 51, 51, 0.5);
+  }
+  
+  /* ===========================
+     BODY
+  =========================== */
+  
+  body {
+    background-color: #ffffff;
+    color: #333;
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* ===========================
+     CONTENEDORES Y TARJETAS
+  =========================== */
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    background-color: #f0f2f5;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .list-group {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px;
+  }
+  
+  .list-group-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .orden {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  .boleto {
+    margin-left: 20px;
+    padding-top: 8px;
+  }
+  
+  .order-total {
+    background-color: #e8f5e9;
+    padding: 12px 16px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #2e7d32;
+    text-align: right;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .empty-message {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #999;
+    margin-top: 40px;
+  }
+  
+  /* ===========================
+     BOTONES
+  =========================== */
+  
+  .btn-success {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .btn-danger {
+    background-color: rgb(196, 4, 4);
+    color: white;
+    padding: 10px 26px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+  

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/Frontend/Carrito/carrito.css" />
+  <link rel="icon" type="image/x-icon" href="/img/mythique.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav nav-center justify-content-center mt-5 position-relative">
+    <!-- Botón del offcanvas -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Icono Mythique -->
+    <div class="Icono-Mythique">
+      <div class="linea-vertical"></div>
+      <a href="/Frontend/index.html">
+        <img src="/img/mythique.png" class="d-block w-10" alt="Mythique" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- TÍTULO -->
+  <h1>Carrito</h1>
+
+  <!-- CONTENEDOR DE ÓRDENES -->
+  <div id="ordenes-container" class="container mt-4"></div>
+
+  <!-- BOTONES DE ACCIÓN -->
+  <button id="confirmar-compra" class="btn btn-success mt-4">Confirmar Compra</button>
+  <button id="cancelar-compra" class="btn btn-danger mt-2">Cancelar Compra</button>
+
+  <!-- SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('ordenes-container');
+      let ordenes = JSON.parse(localStorage.getItem('boletosSeleccionados')) || [];
+  
+      function renderOrdenes() {
+        container.innerHTML = '';
+        if (ordenes.length === 0) {
+          container.innerHTML = '<p class="empty-message">No tienes boletos en tu carrito.</p>';
+          return;
+        }
+  
+        let totalOrden = 0;
+  
+        ordenes.forEach((boleto, index) => {
+          totalOrden += boleto.total;
+  
+          const boletoHTML = document.createElement('div');
+          boletoHTML.classList.add('orden');
+          boletoHTML.innerHTML = `
+            <h5><strong>${boleto.zona}</strong></h5>
+            <p>Tipo: ${boleto.tipo}</p>
+            <p>Cantidad: ${boleto.cantidad}</p>
+            <p>Precio Unitario: $${boleto.precioUnitario}</p>
+            <p>Total: $${boleto.total}</p>
+            <button class="btn btn-sm btn-outline-danger eliminar-boleto" data-index="${index}">Eliminar</button>
+          `;
+          container.appendChild(boletoHTML);
+        });
+  
+        const totalHTML = document.createElement('div');
+        totalHTML.classList.add('order-total', 'mt-3');
+        totalHTML.innerHTML = `<h4>Total de la Orden: $${totalOrden}</h4>`;
+        container.appendChild(totalHTML);
+  
+        // Agregar listeners a los botones de eliminar
+        document.querySelectorAll('.eliminar-boleto').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.target.dataset.index, 10);
+            ordenes.splice(idx, 1);
+            localStorage.setItem('boletosSeleccionados', JSON.stringify(ordenes));
+            renderOrdenes();
+          });
+        });
+      }
+  
+      renderOrdenes();
+  
+      // Confirmar compra
+      document.getElementById('confirmar-compra').addEventListener('click', async () => {
+        if (ordenes.length === 0) {
+          alert('No hay boletos en el carrito.');
+          return;
+        }
+  
+        try {
+          const res = await fetch('http://localhost:5000/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ boletos: ordenes })
+          });
+  
+          const data = await res.json();
+  
+          if (res.ok) {
+            localStorage.removeItem('boletosSeleccionados');
+            alert('¡Compra realizada con éxito!');
+            window.location.href = '/Frontend/index.html';
+          } else {
+            alert(data.mensaje || 'Error al procesar la orden');
+          }
+        } catch (error) {
+          console.error('Error al enviar la orden:', error);
+          alert('Error al conectar con el servidor');
+        }
+      });
+  
+      // Cancelar compra
+      document.getElementById('cancelar-compra').addEventListener('click', () => {
+        const confirmar = confirm('¿Estás seguro de que deseas cancelar la compra? Esta acción eliminará todos los boletos del carrito.');
+        if (confirmar) {
+          localStorage.removeItem('boletosSeleccionados');
+          alert('Compra cancelada. El carrito ha sido vaciado.');
+          location.reload();
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
