@@ -1,21 +1,23 @@
-import {Schema, model} from 'mongoose';
+// models/orders.models.js
+import mongoose from 'mongoose';
 
-const orderSchema = new Schema({
-    items:[
-        {
-            productId: String,
-            name: String,
-            quantity: Number,
-            price: Number,
-        }
-    ],
-    totalPrice:{
-        type: Number,required: true,
-    },
-    date: {
-        type: Date,default: Date.now
-    },
+const ordenSchema = new mongoose.Schema({
+  boletos: [
+    {
+      zona: String,
+      tipo: String,
+      cantidad: Number,
+      precioUnitario: Number,
+      total: Number
+    }
+  ],
+  fecha: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-export default model('Order', orderSchema);
+// Especifica el nombre exacto de la colección
+const Orden = mongoose.model('Orden', ordenSchema, 'orders'); // 'orders' es el nombre de la colección
 
+export default Orden;

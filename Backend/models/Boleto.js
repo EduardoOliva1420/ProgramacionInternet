@@ -1,11 +1,13 @@
-import {Schema,model} from 'mongoose';
+import mongoose from 'mongoose';
 
-const boletoSchema = new Schema({
-  tipo: {type: String, required: true},
-  zona: {type: String, required: true},
-  price: {type: Number, required: true},
-  descripcion: String,
+const boletoSchema = new mongoose.Schema({
+  zona: { type: String, required: true },
+  tipo: { type: String, required: true },
+  cantidad: { type: Number, required: true },
+  precioUnitario: { type: Number, required: true },
+  total: { type: Number, required: true }
 });
 
-export default model('Boleto', boletoSchema);
+const Boleto = mongoose.model('Boleto', boletoSchema);
 
+export default Boleto;
